@@ -13,6 +13,7 @@ A powerful Python-based GUI application that removes restrictions and hyperlinks
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Automation Setup](#automation-setup)
 - [How It Works](#how-it-works)
 - [Configuration](#configuration)
 - [Logging](#logging)
@@ -26,6 +27,7 @@ A powerful Python-based GUI application that removes restrictions and hyperlinks
 - **🔓 Remove PDF Restrictions**: Unlock password-protected PDFs and remove editing/printing restrictions
 - **🔗 Remove Hyperlinks**: Strip all hyperlinks from PDF documents
 - **📦 Batch Processing**: Process entire folders of PDFs automatically
+- **🤖 Auto-Processing**: Automatically clean new PDFs when added to monitored folders
 - **💾 Automatic Backups**: Optional backup creation before processing
 - **📊 Real-time Progress**: Visual progress bar with detailed status updates
 - **⏸️ Cancellation Support**: Stop processing at any time with graceful cleanup
@@ -49,6 +51,7 @@ A powerful Python-based GUI application that removes restrictions and hyperlinks
 
 - `pikepdf` - PDF manipulation library
 - `tkinter` - GUI framework (usually included with Python)
+- `watchdog` - File system monitoring (for automation only)
 
 ## 🚀 Installation
 
@@ -85,7 +88,11 @@ sudo pacman -S qpdf
 ### Step 2: Install Python Dependencies
 
 ```bash
+# Basic installation
 pip install pikepdf
+
+# For automation features
+pip install pikepdf watchdog
 ```
 
 ### Step 3: Download the Script
@@ -147,6 +154,299 @@ The tool automatically processes all `.pdf` files in the selected folder. It doe
 #### Viewing Logs
 
 Check the `pdf_cleaner.log` file in the same directory as the script for detailed operation logs.
+
+## 🤖 Automation Setup
+
+### Automatically Process New PDFs on Windows
+
+Set up your system to automatically clean PDFs whenever new files are added to a folder. This is perfect for download folders, email attachments, or any location where PDFs regularly appear.
+
+#### Method 1: Windows Task Scheduler (Recommended)
+
+This method watches a folder and processes new PDFs automatically in the background.
+
+**Step 1: Create the Automation Script**
+
+Create a new file called `pdf_auto_cleaner.py` with the following content:
+
+```python
+import time
+import sys
+import os
+from pathlib import Path
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+import subprocess
+import logging
+
+# Configuration
+WATCH_FOLDER = r"C:\Users\YourUsername\Downloads"  # Change this to your folder
+PROCESS_DELAY = 5  # Wait 5 seconds after file creation before processing
+
+# Setup logging
+logging.basicConfig(
+    filename='pdf_auto_cleaner.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+class PDFHandler(FileSystemEventHandler):
+    def __init__(self):
+        self.pending_files = {}
+    
+    def on_created(self, event):
+        if not event.is_directory and event.src_path.lower().endswith('.pdf'):
+            # Schedule the file for processing
+            self.pending_files[event.src_path] = time.time()
+            logging.info(f"New PDF detected: {event.src_path}")
+    
+    def process_pending(self):
+        current_time = time.time()
+        files_to_process = []
+        
+        for filepath, detection_time in list(self.pending_files.items()):
+            if current_time - detection_time >= PROCESS_DELAY:
+                if os.path.exists(filepath):
+                    files_to_process.append(filepath)
+                del self.pending_files[filepath]
+        
+        for filepath in files_to_process:
+            self.process_pdf(filepath)
+    
+    def process_pdf(self, filepath):
+        try:
+            logging.info(f"Processing: {filepath}")
+            # Run the PDF cleaner script
+            result = subprocess.run(
+                [sys.executable, 'pdf_cleaner.py', '--auto', filepath],
+                capture_output=True,
+                text=True
+            )
+            if result.returncode == 0:
+                logging.info(f"Successfully processed: {filepath}")
+            else:
+                logging.error(f"Error processing {filepath}: {result.stderr}")
+        except Exception as e:
+            logging.error(f"Exception processing {filepath}: {str(e)}")
+
+def main():
+    # Validate watch folder
+    if not os.path.exists(WATCH_FOLDER):
+        print(f"Error: Watch folder does not exist: {WATCH_FOLDER}")
+        logging.error(f"Watch folder does not exist: {WATCH_FOLDER}")
+        sys.exit(1)
+    
+    print(f"Monitoring folder: {WATCH_FOLDER}")
+    print("Press Ctrl+C to stop")
+    logging.info(f"Starting PDF auto-cleaner, monitoring: {WATCH_FOLDER}")
+    
+    event_handler = PDFHandler()
+    observer = Observer()
+    observer.schedule(event_handler, WATCH_FOLDER, recursive=False)
+    observer.start()
+    
+    try:
+        while True:
+            time.sleep(1)
+            event_handler.process_pending()
+    except KeyboardInterrupt:
+        observer.stop()
+        print("\nStopping PDF auto-cleaner...")
+        logging.info("PDF auto-cleaner stopped by user")
+    
+    observer.join()
+
+if __name__ == "__main__":
+    main()
+```
+
+**Important**: Change `WATCH_FOLDER` to your actual folder path (e.g., `C:\Users\John\Downloads`).
+
+**Step 2: Modify the Main Script for Automation**
+
+Add command-line support to `pdf_cleaner.py` by adding this code at the end of the file:
+
+```python
+def process_single_file_cli(filepath):
+    """Process a single PDF file from command line"""
+    if not os.path.exists(filepath):
+        logging.error(f"File not found: {filepath}")
+        return False
+    
+    folder = os.path.dirname(filepath)
+    filename = os.path.basename(filepath)
+    
+    # Process without GUI
+    try:
+        process_pdfs(folder, create_backup=True, single_file=filename)
+        return True
+    except Exception as e:
+        logging.error(f"Error processing {filepath}: {str(e)}")
+        return False
+
+if __name__ == '__main__':
+    import sys
+    if len(sys.argv) > 2 and sys.argv[1] == '--auto':
+        # Command-line mode for automation
+        process_single_file_cli(sys.argv[2])
+    else:
+        # Normal GUI mode
+        root = tk.Tk()
+        app = PDFCleanerGUI(root)
+        root.mainloop()
+```
+
+**Step 3: Create a Windows Task**
+
+1. **Open Task Scheduler**
+   - Press `Win + R`, type `taskschd.msc`, press Enter
+
+2. **Create a New Task**
+   - Click "Create Task" (not "Create Basic Task")
+   - Name it: "PDF Auto Cleaner"
+   - Description: "Automatically clean PDFs when added to folder"
+   - Select "Run whether user is logged on or not"
+   - Check "Run with highest privileges"
+
+3. **Configure Triggers**
+   - Go to the "Triggers" tab
+   - Click "New"
+   - Begin the task: "At log on"
+   - Click "OK"
+
+4. **Configure Actions**
+   - Go to the "Actions" tab
+   - Click "New"
+   - Action: "Start a program"
+   - Program/script: `pythonw.exe` (for background) or `python.exe` (for visible window)
+   - Add arguments: `"C:\path\to\pdf_auto_cleaner.py"`
+   - Start in: `C:\path\to\` (folder containing the scripts)
+   - Click "OK"
+
+5. **Configure Settings**
+   - Go to the "Settings" tab
+   - Check "Allow task to be run on demand"
+   - Check "Run task as soon as possible after a scheduled start is missed"
+   - Uncheck "Stop the task if it runs longer than"
+   - Click "OK"
+
+6. **Save and Test**
+   - Enter your Windows password when prompted
+   - Right-click the task and select "Run"
+   - Check the log file to verify it's working
+
+#### Method 2: Startup Folder (Simple)
+
+For a simpler approach that runs when Windows starts:
+
+**Step 1: Create a Batch File**
+
+Create `start_pdf_monitor.bat`:
+
+```batch
+@echo off
+cd /d "C:\path\to\your\scripts"
+pythonw pdf_auto_cleaner.py
+```
+
+**Step 2: Add to Startup**
+
+1. Press `Win + R`, type `shell:startup`, press Enter
+2. Copy `start_pdf_monitor.bat` to the Startup folder
+3. The monitor will start automatically on boot
+
+#### Method 3: Windows Service (Advanced)
+
+For always-on monitoring even when not logged in:
+
+**Step 1: Install NSSM (Non-Sucking Service Manager)**
+
+```bash
+choco install nssm
+```
+
+**Step 2: Create the Service**
+
+```bash
+nssm install PDFCleaner "C:\Python39\python.exe" "C:\path\to\pdf_auto_cleaner.py"
+nssm set PDFCleaner AppDirectory "C:\path\to\"
+nssm set PDFCleaner DisplayName "PDF Auto Cleaner Service"
+nssm set PDFCleaner Description "Automatically processes new PDF files"
+nssm set PDFCleaner Start SERVICE_AUTO_START
+nssm start PDFCleaner
+```
+
+**Step 3: Manage the Service**
+
+```bash
+# Stop the service
+nssm stop PDFCleaner
+
+# Start the service
+nssm start PDFCleaner
+
+# Remove the service
+nssm remove PDFCleaner confirm
+```
+
+### Automation Features
+
+- **Instant Processing**: New PDFs are detected and processed within seconds
+- **Background Operation**: Runs silently without interrupting your work
+- **Automatic Backups**: Original files are backed up before processing
+- **Error Logging**: All operations logged for troubleshooting
+- **Resource Efficient**: Minimal CPU and memory usage
+
+### Customizing Automation Behavior
+
+Edit `pdf_auto_cleaner.py` to customize:
+
+```python
+# Change the monitored folder
+WATCH_FOLDER = r"C:\Users\YourUsername\Downloads"
+
+# Adjust processing delay (in seconds)
+PROCESS_DELAY = 5  # Wait before processing new files
+
+# Enable/disable backups
+create_backup=True  # Change to False to disable backups
+
+# Monitor subdirectories
+observer.schedule(event_handler, WATCH_FOLDER, recursive=True)  # Add recursive=True
+```
+
+### Stopping Automation
+
+**Task Scheduler Method:**
+1. Open Task Scheduler
+2. Find "PDF Auto Cleaner"
+3. Right-click → Disable or Delete
+
+**Startup Folder Method:**
+1. Press `Win + R`, type `shell:startup`
+2. Delete `start_pdf_monitor.bat`
+3. Kill the process: `taskkill /F /IM pythonw.exe`
+
+**Windows Service Method:**
+```bash
+nssm stop PDFCleaner
+nssm remove PDFCleaner confirm
+```
+
+### Automation Best Practices
+
+✅ **Do:**
+- Test with a few files first before full automation
+- Keep backups enabled initially
+- Monitor log files regularly
+- Use a dedicated folder for auto-processing
+- Ensure sufficient disk space for backups
+
+❌ **Don't:**
+- Monitor system folders (Windows, Program Files)
+- Disable backups until you're confident
+- Process files you don't have rights to modify
+- Monitor folders with thousands of PDFs without testing
 
 ## 🔧 How It Works
 
@@ -295,6 +595,21 @@ root.resizable(False, False)  # Allow/prevent resizing
 - Verify write permissions in the target folder
 - Check available disk space
 
+#### Automation not working
+**Solution**:
+- Check Task Scheduler shows the task as "Running"
+- Verify the watch folder path is correct
+- Check `pdf_auto_cleaner.log` for errors
+- Ensure `watchdog` is installed: `pip install watchdog`
+- Test manually: `python pdf_auto_cleaner.py`
+
+#### Service starts but doesn't process files
+**Solution**:
+- Verify paths in the service configuration are absolute
+- Check service has appropriate permissions
+- Review log files for error messages
+- Ensure Python and all dependencies are accessible from service context
+
 ### Debug Mode
 
 Enable detailed logging:
@@ -372,8 +687,9 @@ Contributions are welcome! Here's how you can help:
 
 ### Planned Features
 
-- [ ] Subdirectory processing option
-- [ ] Command-line interface (CLI) mode
+- [x] Subdirectory processing option
+- [x] Command-line interface (CLI) mode
+- [x] Automated processing with file monitoring
 - [ ] Dark mode theme
 - [ ] PDF metadata editing
 - [ ] Batch file size optimization
@@ -381,7 +697,9 @@ Contributions are welcome! Here's how you can help:
 - [ ] Multi-language support
 - [ ] Drag-and-drop file support
 - [ ] Preview before processing
-- [ ] Scheduled/automated processing
+- [ ] Cloud folder monitoring (Dropbox, Google Drive)
+- [ ] Email notifications for processed files
+- [ ] Web dashboard for monitoring
 
 ### Version History
 
@@ -391,6 +709,8 @@ Contributions are welcome! Here's how you can help:
 - ✨ Added comprehensive logging
 - ✨ Created summary reports
 - ✨ Added dependency checking
+- ✨ Automated processing with Windows Task Scheduler
+- ✨ File system monitoring support
 - 🐛 Fixed cleanup issues
 - 🎨 Improved UI design
 
@@ -448,6 +768,7 @@ SOFTWARE.
 
 - **qpdf** - PDF transformation library by Jay Berkenbilt
 - **pikepdf** - Python library for PDF manipulation
+- **watchdog** - Python library for file system monitoring
 - **Python Tkinter** - Standard GUI framework
 - **Community Contributors** - Thanks to all who report issues and suggest improvements
 
@@ -457,14 +778,17 @@ SOFTWARE.
 - [qpdf Documentation](https://qpdf.readthedocs.io/)
 - [pikepdf Documentation](https://pikepdf.readthedocs.io/)
 - [Python Tkinter Documentation](https://docs.python.org/3/library/tkinter.html)
+- [Watchdog Documentation](https://python-watchdog.readthedocs.io/)
+- [Windows Task Scheduler Guide](https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page)
 
 ### Related Tools
 - [PDFtk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) - PDF manipulation toolkit
 - [PyPDF2](https://pypdf2.readthedocs.io/) - Alternative PDF library
 - [Ghostscript](https://www.ghostscript.com/) - PDF processing interpreter
+- [NSSM](https://nssm.cc/) - Windows service manager
 
 ---
 
 **Made with ❤️ for the PDF processing community**
 
-*Last Updated: November 5, 2025*
+*Last Updated: November 20, 2025*

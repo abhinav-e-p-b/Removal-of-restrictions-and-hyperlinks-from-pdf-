@@ -1,2 +1,132 @@
 2025-11-05 12:13:03,590 - INFO - Application started
 2025-11-05 13:47:36,783 - INFO - Application started
+2025-11-08 14:58:12,026 - INFO - Application started
+2025-11-08 14:58:26,083 - INFO - Processing: CST301 - M1 Ktunotes.in.pdf
+2025-11-08 14:58:26,091 - INFO - Backup created: C:/Users/abhin/Downloads/FLAT/Mod 1\_backups_20251108_145826\CST301 - M1 Ktunotes.in.pdf
+2025-11-08 14:58:26,450 - INFO - Success: CST301 - M1 Ktunotes.in.pdf (removed 56 links)
+2025-11-08 14:58:26,452 - INFO - Processing: CST301 FLAT MOD1 SET 1.pdf
+2025-11-08 14:58:26,467 - INFO - Backup created: C:/Users/abhin/Downloads/FLAT/Mod 1\_backups_20251108_145826\CST301 FLAT MOD1 SET 1.pdf
+2025-11-08 14:58:27,014 - INFO - Success: CST301 FLAT MOD1 SET 1.pdf (removed 65 links)
+2025-11-08 14:58:27,015 - INFO - Processing: CST301 FLAT MOD1 SET 2.pdf
+2025-11-08 14:58:27,019 - INFO - Backup created: C:/Users/abhin/Downloads/FLAT/Mod 1\_backups_20251108_145826\CST301 FLAT MOD1 SET 2.pdf
+2025-11-08 14:58:27,208 - INFO - Success: CST301 FLAT MOD1 SET 2.pdf (removed 144 links)
+2025-11-08 14:58:27,210 - INFO - Processing: FLAT Whiteboard Mod 1.pdf
+2025-11-08 14:58:27,221 - INFO - Backup created: C:/Users/abhin/Downloads/FLAT/Mod 1\_backups_20251108_145826\FLAT Whiteboard Mod 1.pdf
+2025-11-08 14:58:27,341 - INFO - Success: FLAT Whiteboard Mod 1.pdf (removed 0 links)
+2025-11-08 14:58:27,343 - INFO - Processing: Module 1 FLAT Notes KTU S5 CSE - Kerala Notes.pdf
+2025-11-08 14:58:27,355 - INFO - Backup created: C:/Users/abhin/Downloads/FLAT/Mod 1\_backups_20251108_145826\Module 1 FLAT Notes KTU S5 CSE - Kerala Notes.pdf
+2025-11-08 14:58:27,768 - INFO - Success: Module 1 FLAT Notes KTU S5 CSE - Kerala Notes.pdf (removed 17 links)
+2025-11-08 14:58:27,777 - INFO - Temp folder cleaned up
+2025-11-08 14:58:33,274 - INFO - Summary - Success: 5, Skipped: 0, Errors: 0
+2025-11-17 12:09:15,782 - INFO - Application started
+2025-11-17 12:09:34,132 - INFO - Processing: CST305 - M4 Ktunotes.in.pdf
+2025-11-17 12:09:34,143 - INFO - Backup created: C:/Users/abhin/Downloads/SS/Mod 4\_backups_20251117_120934\CST305 - M4 Ktunotes.in.pdf
+2025-11-17 12:09:34,505 - INFO - Success: CST305 - M4 Ktunotes.in.pdf (removed 78 links)
+2025-11-17 12:09:34,508 - INFO - Processing: Module 4 FNL.pdf
+2025-11-17 12:09:34,511 - INFO - Backup created: C:/Users/abhin/Downloads/SS/Mod 4\_backups_20251117_120934\Module 4 FNL.pdf
+2025-11-17 12:09:34,653 - INFO - Success: Module 4 FNL.pdf (removed 0 links)
+2025-11-17 12:09:34,656 - INFO - Processing: Module 4 System Software Notes - Kerala Notes.pdf
+2025-11-17 12:09:34,665 - INFO - Backup created: C:/Users/abhin/Downloads/SS/Mod 4\_backups_20251117_120934\Module 4 System Software Notes - Kerala Notes.pdf
+2025-11-17 12:09:35,013 - INFO - Success: Module 4 System Software Notes - Kerala Notes.pdf (removed 16 links)
+2025-11-17 12:09:35,016 - INFO - Temp folder cleaned up
+2025-11-17 12:09:37,843 - INFO - Summary - Success: 3, Skipped: 0, Errors: 0
+2025-11-18 06:28:58,358 - INFO - Application started
+2025-11-18 06:29:12,985 - INFO - Processing: CST305 - M5 Ktunotes.in.pdf
+2025-11-18 06:29:12,988 - INFO - Backup created: C:/Users/abhin/Downloads/SS/Mod 5\_backups_20251118_062912\CST305 - M5 Ktunotes.in.pdf
+2025-11-18 06:29:13,103 - INFO - Success: CST305 - M5 Ktunotes.in.pdf (removed 0 links)
+2025-11-18 06:29:13,105 - INFO - Processing: Module 5 System Software Notes - Kerala Notes.pdf
+2025-11-18 06:29:13,111 - INFO - Backup created: C:/Users/abhin/Downloads/SS/Mod 5\_backups_20251118_062912\Module 5 System Software Notes - Kerala Notes.pdf
+2025-11-18 06:29:13,424 - INFO - Success: Module 5 System Software Notes - Kerala Notes.pdf (removed 16 links)
+2025-11-18 06:29:13,425 - INFO - Processing: Module 5.2 FNL.pdf
+2025-11-18 06:29:13,426 - INFO - Backup created: C:/Users/abhin/Downloads/SS/Mod 5\_backups_20251118_062912\Module 5.2 FNL.pdf
+2025-11-18 06:29:13,606 - INFO - Success: Module 5.2 FNL.pdf (removed 0 links)
+2025-11-18 06:29:13,607 - INFO - Processing: Module_5.pdf
+2025-11-18 06:29:13,609 - INFO - Backup created: C:/Users/abhin/Downloads/SS/Mod 5\_backups_20251118_062912\Module_5.pdf
+2025-11-18 06:29:13,849 - INFO - Success: Module_5.pdf (removed 0 links)
+2025-11-18 06:29:14,366 - INFO - Temp folder cleaned up
+2025-11-18 06:29:18,136 - INFO - Summary - Success: 4, Skipped: 0, Errors: 0
+2025-11-20 11:36:33,039 - INFO - Application started
+2025-11-20 11:36:54,708 - INFO - Processing: CST307 - M2 Ktunotes.in.pdf
+2025-11-20 11:36:54,974 - INFO - Success: CST307 - M2 Ktunotes.in.pdf (removed 66 links)
+2025-11-20 11:36:54,976 - INFO - Processing: Module 2 MPMC PPPT Notes - Kerala Notes.pdf
+2025-11-20 11:37:01,008 - INFO - Success: Module 2 MPMC PPPT Notes - Kerala Notes.pdf (removed 19 links)
+2025-11-20 11:37:01,010 - INFO - Processing: MPMC M2 Ktunotes.in.pdf
+2025-11-20 11:37:01,278 - INFO - Success: MPMC M2 Ktunotes.in.pdf (removed 50 links)
+2025-11-20 11:37:01,279 - INFO - Processing: MPMC Mod 2.pdf
+2025-11-20 11:37:01,450 - INFO - Success: MPMC Mod 2.pdf (removed 0 links)
+2025-11-20 11:38:31,469 - INFO - Temp folder cleaned up
+2025-11-20 11:38:58,659 - INFO - Summary - Success: 4, Skipped: 0, Errors: 0
+2025-11-20 12:12:03,077 - INFO - Application started
+2025-11-20 12:12:20,317 - INFO - Processing: CST307 - M3 Ktunotes.in.pdf
+2025-11-20 12:12:20,589 - INFO - Success: CST307 - M3 Ktunotes.in.pdf (removed 52 links)
+2025-11-20 12:12:20,591 - INFO - Processing: Microprocessors_Module_3_Important_topics.pdf
+2025-11-20 12:12:20,669 - INFO - Success: Microprocessors_Module_3_Important_topics.pdf (removed 0 links)
+2025-11-20 12:12:20,672 - INFO - Processing: Module 3 Microprocessor and Microcontroller Notes - Kerala Notes.pdf
+2025-11-20 12:12:20,858 - INFO - Success: Module 3 Microprocessor and Microcontroller Notes - Kerala Notes.pdf (removed 19 links)
+2025-11-20 12:12:20,860 - INFO - Processing: MPMC M3 Ktunotes.in.pdf
+2025-11-20 12:12:21,019 - INFO - Success: MPMC M3 Ktunotes.in.pdf (removed 30 links)
+2025-11-20 12:12:21,020 - INFO - Processing: MPMC Mod 3.pdf
+2025-11-20 12:12:21,175 - INFO - Success: MPMC Mod 3.pdf (removed 0 links)
+2025-11-20 12:12:21,257 - INFO - Temp folder cleaned up
+2025-11-20 12:12:24,691 - INFO - Summary - Success: 5, Skipped: 0, Errors: 0
+2025-11-20 12:12:33,681 - INFO - Processing: CST307 - M4 Ktunotes.in.pdf
+2025-11-20 12:12:33,913 - INFO - Success: CST307 - M4 Ktunotes.in.pdf (removed 66 links)
+2025-11-20 12:12:33,915 - INFO - Processing: Microprocessors_Module_4_Important_Topics.pdf
+2025-11-20 12:12:33,992 - INFO - Success: Microprocessors_Module_4_Important_Topics.pdf (removed 0 links)
+2025-11-20 12:12:33,995 - INFO - Processing: Module 4 Microprocessor and Microcontroller Notes - Kerala Notes.pdf
+2025-11-20 12:12:34,207 - INFO - Success: Module 4 Microprocessor and Microcontroller Notes - Kerala Notes.pdf (removed 19 links)
+2025-11-20 12:12:34,209 - INFO - Processing: MPMC M4 Ktunotes.in.pdf
+2025-11-20 12:12:34,362 - INFO - Success: MPMC M4 Ktunotes.in.pdf (removed 50 links)
+2025-11-20 12:12:34,364 - INFO - Processing: MPMC Mod 4.pdf
+2025-11-20 12:12:34,491 - INFO - Success: MPMC Mod 4.pdf (removed 0 links)
+2025-11-20 12:12:34,497 - INFO - Temp folder cleaned up
+2025-11-20 12:12:36,518 - INFO - Summary - Success: 5, Skipped: 0, Errors: 0
+2025-11-20 12:12:45,694 - INFO - Processing: CST307 - M5 Ktunotes.in.pdf
+2025-11-20 12:12:45,862 - INFO - Success: CST307 - M5 Ktunotes.in.pdf (removed 22 links)
+2025-11-20 12:12:45,864 - INFO - Processing: Module 5 Microprocessor and Microcontroller Notes - Kerala Notes.pdf
+2025-11-20 12:12:46,325 - INFO - Success: Module 5 Microprocessor and Microcontroller Notes - Kerala Notes.pdf (removed 19 links)
+2025-11-20 12:12:46,327 - INFO - Processing: MPMC M5 Ktunotes.in.pdf
+2025-11-20 12:12:46,498 - INFO - Success: MPMC M5 Ktunotes.in.pdf (removed 24 links)
+2025-11-20 12:12:46,502 - INFO - Processing: MPMC Mod 5.pdf
+2025-11-20 12:12:46,675 - INFO - Success: MPMC Mod 5.pdf (removed 0 links)
+2025-11-20 12:12:46,680 - INFO - Temp folder cleaned up
+2025-11-20 12:12:48,595 - INFO - Summary - Success: 4, Skipped: 0, Errors: 0
+2025-11-20 12:12:58,150 - INFO - Processing: Answer key_MPMC_2021 qnppr.pdf
+2025-11-20 12:12:58,288 - INFO - Success: Answer key_MPMC_2021 qnppr.pdf (removed 1 links)
+2025-11-20 12:12:58,290 - INFO - Processing: Answerkerkeympmc_2022qnpaper.pdf
+2025-11-20 12:12:58,480 - INFO - Success: Answerkerkeympmc_2022qnpaper.pdf (removed 0 links)
+2025-11-20 12:12:58,482 - INFO - Processing: CS305-QP (1).pdf
+2025-11-20 12:12:58,561 - INFO - Success: CS305-QP (1).pdf (removed 0 links)
+2025-11-20 12:12:58,563 - INFO - Processing: CS305-SCHEME.pdf
+2025-11-20 12:12:58,655 - INFO - Success: CS305-SCHEME.pdf (removed 0 links)
+2025-11-20 12:12:58,657 - INFO - Processing: CST307 MICROPROCESSORS AND MICROCONTROLLERS, DECEMBER 2021.pdf
+2025-11-20 12:12:58,737 - INFO - Success: CST307 MICROPROCESSORS AND MICROCONTROLLERS, DECEMBER 2021.pdf (removed 2 links)
+2025-11-20 12:12:58,738 - INFO - Processing: CST307 MICROPROCESSORS AND MICROCONTROLLERS, DECEMBER 2022.pdf
+2025-11-20 12:12:58,818 - INFO - Success: CST307 MICROPROCESSORS AND MICROCONTROLLERS, DECEMBER 2022.pdf (removed 2 links)
+2025-11-20 12:12:58,819 - INFO - Processing: CST307 MICROPROCESSORS AND MICROCONTROLLERS, DECEMBER 2023.pdf
+2025-11-20 12:12:58,901 - INFO - Success: CST307 MICROPROCESSORS AND MICROCONTROLLERS, DECEMBER 2023.pdf (removed 2 links)
+2025-11-20 12:12:58,902 - INFO - Processing: CST307-B.pdf
+2025-11-20 12:12:59,010 - INFO - Success: CST307-B.pdf (removed 0 links)
+2025-11-20 12:12:59,012 - INFO - Processing: CST307-QP.pdf
+2025-11-20 12:12:59,129 - INFO - Success: CST307-QP.pdf (removed 0 links)
+2025-11-20 12:12:59,131 - INFO - Processing: CST307-SCHEME (1).pdf
+2025-11-20 12:12:59,211 - INFO - Success: CST307-SCHEME (1).pdf (removed 0 links)
+2025-11-20 12:12:59,213 - INFO - Processing: CST307-SCHEME.pdf
+2025-11-20 12:12:59,313 - INFO - Success: CST307-SCHEME.pdf (removed 0 links)
+2025-11-20 12:12:59,315 - INFO - Processing: micro all pyq.pdf
+2025-11-20 12:12:59,438 - INFO - Success: micro all pyq.pdf (removed 6 links)
+2025-11-20 12:12:59,443 - INFO - Temp folder cleaned up
+2025-11-20 12:13:01,336 - INFO - Summary - Success: 12, Skipped: 0, Errors: 0
+2025-11-20 15:48:16,079 - INFO - Application started
+2025-11-20 15:48:29,722 - INFO - Processing: CST307 - M3 Ktunotes.in.pdf
+2025-11-20 15:48:29,887 - INFO - Success: CST307 - M3 Ktunotes.in.pdf (removed 0 links)
+2025-11-20 15:48:29,890 - INFO - Processing: Microprocessors_Module_3_Important_topics.pdf
+2025-11-20 15:48:29,989 - INFO - Success: Microprocessors_Module_3_Important_topics.pdf (removed 0 links)
+2025-11-20 15:48:29,991 - INFO - Processing: Module 3 Microprocessor and Microcontroller Notes - Kerala Notes.pdf
+2025-11-20 15:48:30,206 - INFO - Success: Module 3 Microprocessor and Microcontroller Notes - Kerala Notes.pdf (removed 0 links)
+2025-11-20 15:48:30,208 - INFO - Processing: MPMC M3 Ktunotes.in.pdf
+2025-11-20 15:48:30,333 - INFO - Success: MPMC M3 Ktunotes.in.pdf (removed 0 links)
+2025-11-20 15:48:30,335 - INFO - Processing: MPMC Mod 3.pdf
+2025-11-20 15:48:30,453 - INFO - Success: MPMC Mod 3.pdf (removed 0 links)
+2025-11-20 15:48:31,761 - INFO - Temp folder cleaned up
+2025-11-20 15:48:34,290 - INFO - Summary - Success: 5, Skipped: 0, Errors: 0
